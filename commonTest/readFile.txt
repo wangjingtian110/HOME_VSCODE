@@ -1,0 +1,4 @@
+正向有功电能	float	kwh	Impl
+反向有功	float	kvar	Kvar
+SOE记录数	int64		SOEnum
+剩余流量	int16	M	remFlow
