@@ -17,7 +17,7 @@ def write_xls(datas):
     sheet1.row(0).height = 100*20
 
     # 合并      
-    sheet1.write_merge(0, 0, 0, len(list(datas[0][0].keys())), 'First Merge')
+    sheet1.write_merge(0, 0, 0, len(list(datas[0][0].keys())) - 1, 'First Merge')
 
     
     tittlStyle = xlwt.XFStyle()
@@ -61,7 +61,7 @@ def write_xls(datas):
         for d in data:
             col = 0
             for value in d.values():
-                sheet1.write(row, col, value, contentStyle)
+                sheet1.write(row, col, value, )
                 col += 1
             row += 1
 

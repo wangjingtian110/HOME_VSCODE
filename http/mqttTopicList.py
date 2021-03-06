@@ -7,11 +7,11 @@ from xlwt.Formatting import Alignment
 
 path ='E:\Temp\out.xls'
 #url = 'http://192.168.47.1:60006/api/v4/clients/'
-url = 'http://cet-dev.cn:18050/api/v4/clients/'
+url = 'http://cet-dev.cn:18050/api/v4/subscriptions/'
 
 def write_xls(datas):
 
-    titles = [u'设备标识',u'用户名',u'设备IP',u'设备端口','设备接入时间']
+    titles = [u'设备标识',u'主题',u'Qos']
 
     f = xlwt.Workbook()
     sheet1 = f.add_sheet(u'sheet1', cell_overwrite_ok=True)    
@@ -48,7 +48,7 @@ def write_xls(datas):
     borders.bottom = 1
     tittlStyle.borders = borders
 
-    sheet1.write(row, 0, "远程设备信息列表", tittlStyle)
+    sheet1.write(row, 0, "远程设备主题信息列表", tittlStyle)
     
 
     row += 1
@@ -65,16 +65,12 @@ def write_xls(datas):
     for data in datas:       
         for d in data:
             col = 0
-            sheet1.col(col).width = 13 * 256
+            sheet1.col(col).width = 18 * 256
             sheet1.write(row,col,d['clientid'], contentStyle); col +=1
-            sheet1.col(col).width = 10 * 256
-            sheet1.write(row,col,d['username'], contentStyle); col +=1
-            sheet1.col(col).width = 15 * 256
-            sheet1.write(row,col,d['ip_address'], contentStyle); col +=1
-            sheet1.col(col).width = 13 * 256
-            sheet1.write(row,col,d['port'], contentStyle); col +=1
-            sheet1.col(col).width = 21 * 256
-            sheet1.write(row,col,d['created_at'], contentStyle); col +=1
+            sheet1.col(col).width = 41 * 256
+            sheet1.write(row,col,d['topic'], contentStyle); col +=1
+            sheet1.col(col).width = 16 * 256
+            sheet1.write(row,col,d['qos'], contentStyle); col +=1
             row += 1
 
         
